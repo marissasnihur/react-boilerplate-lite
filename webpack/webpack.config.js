@@ -11,7 +11,7 @@ function localIdentName() {
 
 module.exports = {
   entry: {
-    app: [path.resolve("src/index.jsx")],
+    app: [path.resolve("src/index.tsx")],
   },
 
   output: {
@@ -22,7 +22,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: [".js", ".jsx"],
+    extensions: [".ts", ".tsx", ".js", ".jsx"],
   },
 
   plugins: [
@@ -35,7 +35,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.(ts|js)x?$/,
         exclude: /node_modules/,
         loader: "babel-loader",
         options: { cacheDirectory: process.env.NODE_ENV === "development" },
