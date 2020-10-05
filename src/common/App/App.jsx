@@ -1,10 +1,10 @@
 import { hot } from "react-hot-loader/root";
 import React, { useEffect, useState } from 'react';
 // import logo from './logo.svg';
-// import './App.css';
+import './App.css';
 import { Calendar, momentLocalizer } from 'react-big-calendar'
 import moment from 'moment'
-import "react-big-calendar/lib/css/react-big-calendar.css";
+import '!style-loader!css-loader!react-big-calendar/lib/css/react-big-calendar.css';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -60,8 +60,8 @@ function App() {
   },[eventList])
 
   return (
-    <div className="App">
-    <AppBar position="static" style={{ backgroundColor: 'white' }}>
+    <>
+    <AppBar position="static" style={{ backgroundColor: 'white', width: '100%' }}>
         <Toolbar>
           <IconButton edge="start" style={{color: 'black'}}>
             <ArrowBackIcon onClick={() => window.history.back()} />
@@ -80,7 +80,7 @@ function App() {
           onSelectEvent={event => window.location.replace(event.event_url)}
         />
       </div>
-    </div>
+    </>
   );
 }
 
