@@ -19,6 +19,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 const localizer = momentLocalizer(moment)
 var tempList = [];
 var fetched = false;
+var tempValues = [];
 
 function App() {
   const [eventList, setEventList] = useState([])
@@ -48,16 +49,19 @@ function App() {
         newEvent.end = moment(tempList[i].end).toDate()
         newEvent.title = tempList[i].title;
         newEvent.event_url = tempList[i].event_url;
-        console.log(newEvent)
-        setEventList([...eventList, newEvent])
+        tempValues.push(newEvent)
       }
       fetched = true;
     }
+    setEventList(tempValues)
   }
 
   useEffect(() => {
     getEvents();
   },[eventList])
+
+  // getEvents();
+  console.log(eventList)
 
   return (
     <>
